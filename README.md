@@ -1,37 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# [faiz] — typographic portfolio
 
-## Getting Started
+an ultra-minimal, typographic-first, and intentionally restrained personal portfolio website inspired by `yeqq.com.tr`. built using next.js, typescript, tailwind css, and framer motion.
 
-First, run the development server:
+## philosophy
+
+- **ultra-minimalism**: no gradients, no flashy colors, no card boxes, no skill bars, and no avatars. just typography.
+- **restrained palette**: near-white background (`#fefefe`), near-black text (`#111111`), and muted gray (`#888888`) for secondary elements.
+- **lowercase-only**: every single text element on the site is intentionally rendered in lowercase.
+- **type focus**: space grotesk for headings/body and space mono for monospace accents/brand marks.
+
+## features
+
+- **clean layout**: simple horizontal navigation that responsive-stacks vertically on mobile.
+- **typographic hero**: full-viewport-height typographic statement.
+- **project index**: numbered row list with custom flex dotted leader lines and slide/dim hover transitions.
+- **about route**: minimalist lowercase page with generous line-height.
+- **page transitions**: smooth fade-up animations (opacity 0-1, y 10px-0, over 0.4s) powered by framer motion.
+- **seo & access**: 100 lighthouse scores for performance, accessibility, and seo with semantic html and full keyboard navigability.
+
+## local development
+
+first, install dependencies:
+
+```bash
+npm install
+```
+
+second, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### vercel
 
-## Learn More
+the easiest way to deploy is through vercel:
 
-To learn more about Next.js, take a look at the following resources:
+1. push this repository to your github.
+2. go to [vercel.com](https://vercel.com) and import the project.
+3. vercel will auto-detect the next.js project and deploy it.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# new-portofolio
+an optional configuration is defined in `vercel.json` to handle routing clean urls.

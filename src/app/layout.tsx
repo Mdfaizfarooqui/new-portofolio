@@ -1,61 +1,68 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
-import LenisScroll from "@/components/LenisScroll";
-import Cursor from "@/components/ui/Cursor";
-import ThreeBackground from "@/components/ui/ThreeBackground";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
-// Import Outfit typography variables
-const outfit = Outfit({
-  variable: "--font-outfit",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "AURA — Premium Creative Agency & Web Design Studio",
-  description:
-    "AURA is an award-winning creative agency designing immersive 3D digital experiences, Next.js applications, and brand identities with sub-second performance.",
-  keywords: [
-    "Creative Agency",
-    "Digital Studio",
-    "3D Web Design",
-    "Next.js 15 App",
-    "Tailwind CSS v4",
-    "WebGL Particles",
-    "Awwwards portfolio",
-  ],
+  title: "faiz — designer & developer",
+  description: "quiet, typographic-first portfolio of a designer and developer who lets their work speak for itself.",
+  metadataBase: new URL("https://new-portofolio.vercel.app"),
   openGraph: {
-    title: "AURA — Premium Creative Agency & Web Design Studio",
-    description:
-      "Explore Awwwards-inspired immersive 3D portals, interactive design timelines, and validated performance-driven apps developed by AURA.",
+    title: "faiz — designer & developer",
+    description: "quiet, typographic-first portfolio of a designer and developer who lets their work speak for itself.",
     type: "website",
-    locale: "en_US",
+    locale: "en_us",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "faiz — designer & developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "faiz — designer & developer",
+    description: "quiet, typographic-first portfolio of a designer and developer who lets their work speak for itself.",
+    images: ["/og-image.png"],
   },
 };
 
 export default function RootLayout({
   children,
-  modal,
 }: Readonly<{
   children: React.ReactNode;
-  modal?: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
-      <body className="min-h-full bg-dark-bg text-gray-100 flex flex-col relative select-none">
-        {/* WCAG Skip link */}
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
+    <html lang="en" className={`${spaceGrotesk.variable} ${spaceMono.variable} h-full antialiased scroll-smooth`}>
+      <body className="min-h-full bg-[#fefefe] text-[#111111] font-sans flex flex-col relative select-none">
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#111111] focus:text-[#fefefe] focus:font-mono focus:text-xs lowercase"
+        >
+          skip to content
         </a>
-
-        {/* Global Interactive Providers */}
-        <LenisScroll>
-          <Cursor />
-          <ThreeBackground />
+        <Header />
+        <PageTransition>
           {children}
-          {modal}
-        </LenisScroll>
+        </PageTransition>
+        <Footer />
       </body>
     </html>
   );
